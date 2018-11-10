@@ -5,6 +5,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage{mathrsfs}
+\pagestyle{empty}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
 
 \usepackage{setspace}
@@ -17,13 +20,17 @@
 \newcommand{\afb}[3]{\ensuremath{_#1 \textbf{#2}_#3}}
 \newcommand{\vek}[3]{\ensuremath{\begin{bmatrix} #1\\ #2\\ #3\end{bmatrix}}}
 \newcommand{\vekt}[2]{\ensuremath{\begin{bmatrix} #1\\ #2\end{bmatrix}}}
-\newcommand{\mtrix}[9]{\ensuremath{
+\newcommand{\mediumMatrix}[9]{\ensuremath{
 		\begin{bmatrix}
 			#1 & #2 & #3 \\
 			#4 & #5 & #6 \\
 			#7 & #8 & #9
 		\end{bmatrix}}}
-
+\newcommand{\smallMatrix}[4]{\ensuremath{\begin{bmatrix}
+			#1 & #2 \\
+			#3 & #4
+\end{bmatrix}}}
+\newcommand{\script}[1]{\mathpzc{#1}}
 
 \setlength{\parindent}{0cm} 
 
@@ -42,7 +49,11 @@
 	
 	\section{Egenværdier og egenvektorer}
 	
-	En gennemgående afbildning i dette kapitel er på den sædvanlige form:
+	\subsection*{Introduktion}
+	
+	For en vilkårlig afbildning $f$, kan det være tilfældet, at en vektor er proportional med sin billedvektor. En sådan billedvektor kan så være skaleret i forhold til den vektor den afbilder, og den vil så kunne beskrives af et produkt mellem en vektor og en skalar $\lambda$. Et sådan produkt beskriver et kendt problem der går under navnet \textit{egenværdisproblemet}. Det er dette emne der behandles i denne sektion, og det er en vigtig gren indenfor ingeniørmatematikken. \newline
+	
+	I dette kapitel behandles afbildninger der afbilder et objekt i $V$ ind i $V$. Dvs. en afbildning defineret ved nedenstående:
 	
 	\cent{$ f:V \rightarrow V $}
 	
@@ -50,11 +61,11 @@
 	
 	\subsection{Egenværdiproblemet}
 	
-	Egenværdiproblemet er et synonym for det problem der omhandler vektorer og proportionalitet med hensyn til deres billedvektor. Der gælder det helt særlige, at vektorer kan multipliceres med matricer, og give en skaleret udgave af vektoren, således udtrykt i følgende ligning:
+	Egenværdiproblemet er et synonym for det problem der omhandler vektorer og proportionalitet med hensyn til deres billedvektor. Der gælder det helt særlige, at vektorer kan multipliceres med skalarer og returnere en skalaret vektor. Nedenstående afbildning kan betragtes:
 	
-	\cent{$ f(v)=Mv=\lambda v $}
+	\cent{$ f(v)=\lambda v $}
 	
-	Hvor skalaren $\lambda$ er en egenværdi for en given afbildning $f(v)$ og $v$ er afbildningens dertilhørende egenvektor.
+	Hvor skalaren $\lambda$ er en egenværdi for en given afbildning $f(v)$ og $v$ er afbildningens dertilhørende egenvektor. 
 	
 	\subsection*{Eksplicit aflæsning af egenværdier ud fra afbildningsmatrix}
 	
@@ -65,12 +76,12 @@
 	
 	der med hensyn til en given basis $\textbf{a}=(a_1,a_2,a_3)$ har en dertilhørende afbildningsmatrix \afb{a}{F}{a}:
 	
-	\cent{$ \afb{a}{F}{a} = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} $}
+	\cent{$ \afb{a}{F}{a} = \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} $}
 	Afbildes $a_1$, $a_2$ og $a_3$ i $f$ fås:
 	
-	\cent{$ f(a_1)=\ \afb{a}{F}{a} \ _a a_1 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{1}{0}{0} = \vek{2}{0}{0} $}
-	\cent{$ f(a_2)=\ \afb{a}{F}{a} \ _a a_2 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{1}{0} = \vek{0}{4}{0} $}	
-	\cent{$ f(a_3)=\ \afb{a}{F}{a} \ _a a_3 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{0}{1} = \vek{0}{0}{6} $}
+	\cent{$ f(a_1)=\ \afb{a}{F}{a} \ _a a_1 = \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{1}{0}{0} = \vek{2}{0}{0} $}
+	\cent{$ f(a_2)=\ \afb{a}{F}{a} \ _a a_2 = \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{1}{0} = \vek{0}{4}{0} $}	
+	\cent{$ f(a_3)=\ \afb{a}{F}{a} \ _a a_3 = \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{0}{1} = \vek{0}{0}{6} $}
 	
 	Her ses det at de indeholdte vektorer i basisen $a$ er egenvektorer til afbildningsvektorerne i $f$, hvor koefficienten til hhv. $a_1$, $a_2$ og $a_3$ er afbildningernes egenværdi tilhørende deres egenvektor. Egenværdierne er her givet som diagonalelementerne i \afb{a}{F}{a}, men dette er ikke altid tilfældet.
 	
@@ -78,24 +89,19 @@
 	I ovenstående tilfælde kan det ses, at summen af de tre basisvektorer $ a_1 $, $ a_2 $ og $ a_3 $ er blevet strukket med $\lambda=2$ langs x-aksen. Derefter med $\lambda=4$ langs y-aksen og til sidst med $\lambda=6$ op ad z-aksen. Det er derfor tydeligt, at $a_1$, $a_2$ og $a_3$ må være egenvektorer for $f$ og 2, 4 og 6 er så afbildningsens egenværdier.
 	Hvis de tre billedvektorer er lineært uafhængige, kan man også sige, at det parallelepidium som de tre billedvektorer udspænder, er blevet strukket med de ovennævnte egenværdier i hhv. hver af de tre retninger. Det kan indses ved matrixproduktet mellem afbildningsmatricen og en tilfældig vektor med koordinaterne $x_1$, $x_2$ og $x_3$: 
 	
-	\cent{$ \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{x_1}{x_2}{x_3} = \vek{2x_1}{4x_2}{6x_3} $}
+	\cent{$ \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{x_1}{x_2}{x_3} = \vek{2x_1}{4x_2}{6x_3} $}
 	
 	\subsection*{Bestemmelse af egenværdier og egenvektorer ud fra vilkårlig kvadratisk matrice}
 	
 	I det foregående eksempel kunne egenværdierne for en afbildning eksplicit aflæses i afbildningsmatricen \afb{a}{F}{a}, men det er ikke altid tilfældet. Det er nemlig ikke kun diagonalmatricer der har egenværdier, vilkårlige kvadratiske matricer kan også have egenværdier som ikke kan aflæses direkte ud fra dens elementer. Til disse må man ty til nogle andre matricer, og det kræver noget mere viden omkring matricer og egenværdier. \newline
 	Man kan betragte en matrice som er afbildningsmatrix for en afbildning $h$:
 	
-	\newcommand{\matrixh}{\ensuremath{\begin{bmatrix}
-				\frac{7}{3} & \frac{2}{3} \\
-				\frac{1}{3} & \frac{8}{3}
-	\end{bmatrix}}}
-	
-	\cent{$ _eh = \matrixh$}
+	\cent{$ _eh = \smallMatrix{\frac{7}{3}}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}}$}
 	
 	To vektorer kan gives ved $v_1=(2,-1)$ og $v_2=(1,1)$, begge med basis i $e$. Vektorproduktet mellem $_eh$ og hhv. $v_1$ og $v_2$ kan bestemmes til:
 	
-	\cent{$ _eh(v_1)= \matrixh \cdot \vekt{2}{-1} = \vekt{4}{-2} = 2 \cdot \vekt{2}{-1}$}
-	\cent{$ _eh(v_2)= \matrixh \cdot \vekt{1}{-1} = \vekt{3}{3} = 3 \cdot \vekt{1}{1}$}
+	\cent{$ _eh(v_1)= \smallMatrix{\frac{7}{3}}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}} \cdot \vekt{2}{-1} = \vekt{4}{-2} = 2 \cdot \vekt{2}{-1}$}
+	\cent{$ _eh(v_2)= \smallMatrix{\frac{7}{3}}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}} \cdot \vekt{1}{-1} = \vekt{3}{3} = 3 \cdot \vekt{1}{1}$}
 	
 	Her ses det, at 2 og 3 kan være afbildningens egenværdier, og de to vektorer $v_1=(2,-1)$ og $v_1=(1,1)$ egenværdiernes dertilhørende egenvektorer.
 	
@@ -118,6 +124,27 @@
 		\item Disse kan sammenfattes til et vektorsæt.
 	\end{itemize}
 	Disse vektorer vil så være lineært uafhængige.
+	\subsubsection*{Bevis}
+	
+	ud fra antagelsen om at ovenstående ikke gælder, må det gælde at en vektor $ \textbf{x} $ kan hives ud af sættet og besrives af det udtyndede sæt, hvor alle lineært afhængige vektorer er pillet ud: 
+	
+	\cent{$ \textbf{x} = k_1v_1+k_2v_2+...+k_mv_m $}
+	
+	Alle de led hvor der indgår en nul-koefficient antages at være pillet ud. \newline
+	
+	Denne vektor, samt alle de andre vektorer i linearkombinationen, har nogle dertilhørende egenværdier tilknyttet, og disse  egenværdier for hhv. $\textbf{x}$ og $v_i$ betegnes $\lambda$ og $\lambda_i$. Et udtryk for $\lambda\textbf{x}$ kan opnås dels ved at gange igennem med $\lambda$ eller bestemme billedet af $f$ på begge sider:
+	
+	\cent{$\lambda\textbf{x} = \lambda k_1 v_1+\lambda k_2 v_2+...+\lambda k_m v_m $}
+	\cent{$\lambda\textbf{x} = \lambda_1 k_1 v_1+\lambda_2 k_2 v_2+...+\lambda_m k_m v_m $}
+	
+	Da udtrykkende er de samme kan nul-vektoren beskrives ved at trække de to ligninger fra hinanden:
+	
+	\cent{ $ \textbf{0} = k_1(\lambda - \lambda_1)v_1 + k_2(\lambda - \lambda_2)v_2 + ... + k_m(\lambda - \lambda_m)v_m $ }
+	
+	Da alle nul-koefficienter var pillet ud, må det så betyde at egenværdien for $ \textbf{x} $ må være lig med egenværdierne for $v_i$, men dette må så betyde, at vektorerne må være valgt ud fra samme egenrum, og derfor må være lineært uafhængige. 
+	\subsubsection{Egenbasis}
+	
+	Det førnævnte vektorsæt i forrige sektion har den egenskab, at hvis summen af de geometriske multipliciter for hver egenværdi er lig med dimensionen af $V$, så er vektorsættet en basis for dette vektorrum. En sådan basis kaldes også for en \textit{egenvektorbasis}; eller kort: \textit{egenbasis}.
 	
 	\subsubsection{Opsummering}
 	På baggrund af de foregående sektioner og mere generelt, kan følgende liste af egenskaber opstilles.\newline
@@ -128,7 +155,32 @@
 		\item $f$ kan højst have $n$ forskellige egenværdier.
 		\item Hvis $f$ har $n$ forskellige egenværdier, findes der en basis for $V$ bestående af egenvektorer for $f$.
 		\item Summen af de geometriske multipliciteter af egenværdierne for $f$ kan højst være $n$.
-		\item 	Hvis, og kun hvis, summen af de geometriske multipliciteter af egenværdierne for $f$ er lig med dimensionen af $V$, findes der en basis for $V$ bestående af egenvektorer for $f$.
+		\item 	Hvis, og kun hvis, summen af de geometriske multipliciteter af egenværdierne for $f$ er lig med dimensionen af $V$, findes der en basis for $V$ bestående af egenvektorer for $f$. En sådan basis kaldes også for en \textit{egenbasis}.
 	\end{itemize}
+	\subsection{Afbildningsmatricer i forhold til egenbasis}
+	
+	Lad $ f : V \mapsto V $ betegne en lineær afbildning af et $n$-dimensionalt vektorrum V ind i sig selv, og lad $ v=(v_1,…,v_n)$ være en basis for $V$. Der gælder da:
+	
+	\begin{enumerate}
+		\item Afbildningsmatricen $\afb{v}{F}{v}$ for $f$ med hensyn til $v$ er en diagonalmatrix, hvis, og kun hvis, $v$ er en egenbasis for $V$ med hensyn til $f$.
+		\item Antag, at $v$ er en egenbasis for $V$ med hensyn til $f$. Lad $\Lambda$ betegne den diagonalmatrix, som er afbildningsmatrix for $f$ med hensyn til $v$. Rækkefølgen af diagonalelementerne i $\Lambda$ er da bestemt ud fra den valgte basis således: Basisvektoren $v_i$ hører til den egenværdi $\lambda_i$, som står i den i’te søjle i $\Lambda$.
+	\end{enumerate}
+	
+	\subsubsection{Eksempel på diagonal afbildningsmatrix med reelle elementer}
+	
+	
+	
+	\subsubsection*{Eksempel på diagonal afbildningsmatrix med komplekse elementer}
+	Lad $ f : \mathbb{C}^2 \mapsto \mathbb{C}^2 $ være en kompleks lineær afbildning som opfylder:
+	\cent{$ f(\script{z}_1,\script{z}_2) = (-\script{z}_2,\script{z}_1) $}
+	
+	Afbildningen af de komplekse vektorer $(i,1)$ og $(-i,1)$ kan bestemmes til følgende:
+	
+	\cent{$ f(i,1)=(-1,i)=i(i,1) $}
+	\cent{$ f(-i,1)=(-1,-i)=-i(-i,1) $}
+	
+	Det ses, at $i$ og $-i$ er egenværdier for $f$ med tilhørende egenvektorer $(i,1)$ og $(-i,1)$.  Da vektorerne ovenikøbet er lineært uafhængige, er det også en egenbasis for vektorrummet $\mathbb{C}^2$ med tilhørende afbildningsmatrix som givet ved nedenstående:
+	
+	\cent{$ \Lambda = \smallMatrix{\lambda_1}{0}{0}{\lambda_2} = \smallMatrix{i}{0}{0}{-i} $}
 	
 \end{document}
