@@ -141,7 +141,12 @@
 	
 	\cent{ $ \textbf{0} = k_1(\lambda - \lambda_1)v_1 + k_2(\lambda - \lambda_2)v_2 + ... + k_m(\lambda - \lambda_m)v_m $ }
 	
-	Da alle nul-koefficienter var pillet ud, må det så betyde at egenværdien for $ \textbf{x} $ må være lig med egenværdierne for $v_i$, men dette må så betyde, at vektorerne må være valgt ud fra samme egenrum, og derfor må være lineært uafhængige. 
+	Da alle nul-koefficienter var pillet ud, må det så betyde at egenværdien for $ \textbf{x} $ må være lig med egenværdierne for $v_i$, men dette må så betyde, at vektorerne må være valgt ud fra samme egenrum, og derfor må være lineært uafhængige. Dette strider også mod at $\textbf{x}$ er en linearkombination af basisvektorer, da det ikke er muligt hvis den er del af et lineært uafhængigt sæt. \newline
+	
+	Hvis ovenstående er korrekt, må mindst en af koefficienterne ($(\lambda-\lambda_i)$) være forskellig fra 0, men så vil nul-vektoren $\textbf{0}$ være beskrevet ved en egentlig linearkombination af vektorer, hvilket strider mod reglerne vedrørende lineær uafhængighed.\newline
+	
+	Derfor må antagelsen nødvendigvis føre til modstrid.
+	
 	\subsubsection{Egenbasis}
 	
 	Det førnævnte vektorsæt i forrige sektion har den egenskab, at hvis summen af de geometriske multipliciter for hver egenværdi er lig med dimensionen af $V$, så er vektorsættet en basis for dette vektorrum. En sådan basis kaldes også for en \textit{egenvektorbasis}; eller kort: \textit{egenbasis}.
