@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+
+\usepackage{setspace}
+
+\author{Martin Hansen}
+\title{Matematik 1}
+
+\newcommand{\cent}[1]{\begin{center}#1\end{center}}
+\newcommand{\eCent}{}
+\newcommand{\afb}[3]{\ensuremath{_#1 \textbf{#2}_#3}}
+\newcommand{\vek}[3]{\ensuremath{\begin{bmatrix} #1\\ #2\\ #3\end{bmatrix}}}
+\newcommand{\vekt}[2]{\ensuremath{\begin{bmatrix} #1\\ #2\end{bmatrix}}}
+\newcommand{\mtrix}[9]{\ensuremath{
+		\begin{bmatrix}
+			#1 & #2 & #3 \\
+			#4 & #5 & #6 \\
+			#7 & #8 & #9
+		\end{bmatrix}}}
+
+
+\setlength{\parindent}{0cm} 
+
+\begin{document}
+	
+	\maketitle
+	\begin{center}
+		\Large \textbf{Forord}
+		
+		Denne formelsamling baserer sig på DTU eNotes E1005.
+	\end{center}
+	\pagebreak
+	\tableofcontents
+	\pagebreak
+	\part{\textbf{Geometri i det euklide rum}}
+	
+	\section{Egenværdier og egenvektorer}
+	
+	En gennemgående afbildning i dette kapitel er på den sædvanlige form:
+	
+	\cent{$ f:V \rightarrow V $}
+	
+	hvor det ses at definitionsrummet og dispositionsrummet er ens og hvor en vektor som er identisk med sin afbildning kaldes en fiksvektor. 
+	
+	\subsection{Egenværdiproblemet}
+	
+	Egenværdiproblemet er et synonym for det problem der omhandler vektorer og proportionalitet med hensyn til deres billedvektor. Der gælder det helt særlige, at vektorer kan multipliceres med matricer, og give en skaleret udgave af vektoren, således udtrykt i følgende ligning:
+	
+	\cent{$ f(v)=Mv=\lambda v $}
+	
+	Hvor skalaren $\lambda$ er en egenværdi for en given afbildning $f(v)$ og $v$ er afbildningens dertilhørende egenvektor.
+	
+	\subsection*{Eksplicit aflæsning af egenværdier ud fra afbildningsmatrix}
+	
+	
+	Lad $Gr_3(\mathbb{R}$ betegne et vektorrum af vektorer, så kan der gives en lineærafbildning $f$:
+	
+	\cent{$f : Gr_3(\mathbb{R})\mapsto Gr_3(\mathbb{R})$ }
+	
+	der med hensyn til en given basis $\textbf{a}=(a_1,a_2,a_3)$ har en dertilhørende afbildningsmatrix \afb{a}{F}{a}:
+	
+	\cent{$ \afb{a}{F}{a} = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} $}
+	Afbildes $a_1$, $a_2$ og $a_3$ i $f$ fås:
+	
+	\cent{$ f(a_1)=\ \afb{a}{F}{a} \ _a a_1 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{1}{0}{0} = \vek{2}{0}{0} $}
+	\cent{$ f(a_2)=\ \afb{a}{F}{a} \ _a a_2 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{1}{0} = \vek{0}{4}{0} $}	
+	\cent{$ f(a_3)=\ \afb{a}{F}{a} \ _a a_3 = \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{0}{0}{1} = \vek{0}{0}{6} $}
+	
+	Her ses det at de indeholdte vektorer i basisen $a$ er egenvektorer til afbildningsvektorerne i $f$, hvor koefficienten til hhv. $a_1$, $a_2$ og $a_3$ er afbildningernes egenværdi tilhørende deres egenvektor. Egenværdierne er her givet som diagonalelementerne i \afb{a}{F}{a}, men dette er ikke altid tilfældet.
+	
+	\subsubsection*{Geometrisk fortolkning}
+	I ovenstående tilfælde kan det ses, at summen af de tre basisvektorer $ a_1 $, $ a_2 $ og $ a_3 $ er blevet strukket med $\lambda=2$ langs x-aksen. Derefter med $\lambda=4$ langs y-aksen og til sidst med $\lambda=6$ op ad z-aksen. Det er derfor tydeligt, at $a_1$, $a_2$ og $a_3$ må være egenvektorer for $f$ og 2, 4 og 6 er så afbildningsens egenværdier.
+	Hvis de tre billedvektorer er lineært uafhængige, kan man også sige, at det parallelepidium som de tre billedvektorer udspænder, er blevet strukket med de ovennævnte egenværdier i hhv. hver af de tre retninger. Det kan indses ved matrixproduktet mellem afbildningsmatricen og en tilfældig vektor med koordinaterne $x_1$, $x_2$ og $x_3$: 
+	
+	\cent{$ \mtrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{x_1}{x_2}{x_3} = \vek{2x_1}{4x_2}{6x_3} $}
+	
+	\subsection*{Bestemmelse af egenværdier og egenvektorer ud fra vilkårlig kvadratisk matrice}
+	
+	I det foregående eksempel kunne egenværdierne for en afbildning eksplicit aflæses i afbildningsmatricen \afb{a}{F}{a}, men det er ikke altid tilfældet. Det er nemlig ikke kun diagonalmatricer der har egenværdier, vilkårlige kvadratiske matricer kan også have egenværdier som ikke kan aflæses direkte ud fra dens elementer. Til disse må man ty til nogle andre matricer, og det kræver noget mere viden omkring matricer og egenværdier. \newline
+	Man kan betragte en matrice som er afbildningsmatrix for en afbildning $h$:
+	
+	\newcommand{\matrixh}{\ensuremath{\begin{bmatrix}
+				\frac{7}{3} & \frac{2}{3} \\
+				\frac{1}{3} & \frac{8}{3}
+	\end{bmatrix}}}
+	
+	\cent{$ _eh = \matrixh$}
+	
+	To vektorer kan gives ved $v_1=(2,-1)$ og $v_2=(1,1)$, begge med basis i $e$. Vektorproduktet mellem $_eh$ og hhv. $v_1$ og $v_2$ kan bestemmes til:
+	
+	\cent{$ _eh(v_1)= \matrixh \cdot \vekt{2}{-1} = \vekt{4}{-2} = 2 \cdot \vekt{2}{-1}$}
+	\cent{$ _eh(v_2)= \matrixh \cdot \vekt{1}{-1} = \vekt{3}{3} = 3 \cdot \vekt{1}{1}$}
+	
+	Her ses det, at 2 og 3 kan være afbildningens egenværdier, og de to vektorer $v_1=(2,-1)$ og $v_1=(1,1)$ egenværdiernes dertilhørende egenvektorer.
+	
+	\subsection{Generelle egenskaber for egenvektorer og egenværdier}
+	\subsubsection{Mængden af egenvektorer}
+	Senere hen vil det vise sig, at hvis en hvilken som helst afbildningsmatrix for en vilkårlig afbildning har en egenværdi, så er mængden af de egenvektorer der knytter sig til denne egenværdi uendelig. Denne mængde af uendelige egenvektorer knyttet til $\lambda$ vil så også udgøre et underrum i $V$, hvilket medfører at der er tale om et vektorrum der overholder stabilitetskravene for dette. Dette underrum kaldes også \textit{egenrumnet}, og hvis dette rum er endeligt dimensionalt, så omtales det som den \textit{geometriske multiplicitet af $\lambda$}. \newline
+	\newline
+	Kort opsummeret:
+	
+	\begin{itemize}
+		\item Mængden af egenvektorer tilhørende en vilkårlig egenværdi er uendelig.
+		\item Denne mængde udgør også et underrum af $V$ der også omtales som \textit{egenrummet}.
+		\item Hvis denne er endelig dimensional kaldes det også \textit{den geometriske multiplicitet af $\lambda$}.
+	\end{itemize}
+	\subsubsection{Egenrummet og dens egenskaber}
+	For en afbildning $f : V \mapsto V$ gælder der det særlige omkring udvælgelse af egenvektorer i de forskellige egenrum der knytter sig til afbildningens egenværdier at:
+	\begin{itemize}
+		\item $f$ har en række egenværdier med dertilhørende egenrum.
+		\item For hvert af disse egenrum, kan der udvælges nogle lineært uafhængige vektorer.
+		\item Disse kan sammenfattes til et vektorsæt.
+	\end{itemize}
+	Disse vektorer vil så være lineært uafhængige.
+	
+	\subsubsection{Opsummering}
+	På baggrund af de foregående sektioner og mere generelt, kan følgende liste af egenskaber opstilles.\newline
+	
+	For en lineær afbildning $f : V \mapsto V$ ind i sig selv med dimension $n$, gælder der:
+	\begin{itemize}
+		\item Egentlige egenvektorer som hører til forskellige egenværdier for $f$, er lineært uafhængige.
+		\item $f$ kan højst have $n$ forskellige egenværdier.
+		\item Hvis $f$ har $n$ forskellige egenværdier, findes der en basis for $V$ bestående af egenvektorer for $f$.
+		\item Summen af de geometriske multipliciteter af egenværdierne for $f$ kan højst være $n$.
+		\item 	Hvis, og kun hvis, summen af de geometriske multipliciteter af egenværdierne for $f$ er lig med dimensionen af $V$, findes der en basis for $V$ bestående af egenvektorer for $f$.
+	\end{itemize}
+	
+\end{document}
