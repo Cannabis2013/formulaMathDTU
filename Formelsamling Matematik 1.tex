@@ -12,11 +12,16 @@
 
 \usepackage{setspace}
 
+% Meta info
 \author{Martin Hansen}
 \title{Matematik 1}
 
+% Math section related
 \newcommand{\cent}[1]{\begin{center}#1\end{center}}
-\newcommand{\eCent}{}
+\newcommand{\mAlign}[1]{\begin{align*}#1\end{align*}}
+\newcommand{\mat}[1]{\begin{gather*}#1\end{gather*}}
+
+% Macro section
 \newcommand{\afb}[3]{\ensuremath{_#1 \textbf{#2}_#3}}
 \newcommand{\vek}[3]{\ensuremath{\begin{bmatrix} #1\\ #2\\ #3\end{bmatrix}}}
 \newcommand{\vekt}[2]{\ensuremath{\begin{bmatrix} #1\\ #2\end{bmatrix}}}
@@ -30,8 +35,10 @@
 			#1 & #2 \\
 			#3 & #4
 \end{bmatrix}}}
+
 \newcommand{\script}[1]{\mathpzc{#1}}
 
+% Remove "New paragraph" indentation
 \setlength{\parindent}{0cm} 
 
 \begin{document}
@@ -47,7 +54,7 @@
 	\pagebreak
 	\part{\textbf{Geometri i det euklide rum}}
 	
-	\section{Egenværdier og egenvektorer}
+	\section{Egenværdiproblemet}
 	
 	\subsection*{Introduktion}
 	
@@ -59,7 +66,7 @@
 	
 	hvor det ses at definitionsrummet og dispositionsrummet er ens og hvor en vektor som er identisk med sin afbildning kaldes en fiksvektor. 
 	
-	\subsection{Egenværdiproblemet}
+	\subsection{Egenværdier og egenvektorer}
 	
 	Egenværdiproblemet er et synonym for det problem der omhandler vektorer og proportionalitet med hensyn til deres billedvektor. Der gælder det helt særlige, at vektorer kan multipliceres med skalarer og returnere en skalaret vektor. Nedenstående afbildning kan betragtes:
 	
@@ -67,7 +74,7 @@
 	
 	Hvor skalaren $\lambda$ er en egenværdi for en given afbildning $f(v)$ og $v$ er afbildningens dertilhørende egenvektor. 
 	
-	\subsection*{Eksplicit aflæsning af egenværdier ud fra afbildningsmatrix}
+	\subsubsection{Eksplicit aflæsning af egenværdier ud fra afbildningsmatrix}
 	
 	
 	Lad $Gr_3(\mathbb{R}$ betegne et vektorrum af vektorer, så kan der gives en lineærafbildning $f$:
@@ -85,13 +92,35 @@
 	
 	Her ses det at de indeholdte vektorer i basisen $a$ er egenvektorer til afbildningsvektorerne i $f$, hvor koefficienten til hhv. $a_1$, $a_2$ og $a_3$ er afbildningernes egenværdi tilhørende deres egenvektor. Egenværdierne er her givet som diagonalelementerne i \afb{a}{F}{a}, men dette er ikke altid tilfældet.
 	
-	\subsubsection*{Geometrisk fortolkning}
+	\subsubsection{Geometrisk fortolkning}
 	I ovenstående tilfælde kan det ses, at summen af de tre basisvektorer $ a_1 $, $ a_2 $ og $ a_3 $ er blevet strukket med $\lambda=2$ langs x-aksen. Derefter med $\lambda=4$ langs y-aksen og til sidst med $\lambda=6$ op ad z-aksen. Det er derfor tydeligt, at $a_1$, $a_2$ og $a_3$ må være egenvektorer for $f$ og 2, 4 og 6 er så afbildningsens egenværdier.
 	Hvis de tre billedvektorer er lineært uafhængige, kan man også sige, at det parallelepidium som de tre billedvektorer udspænder, er blevet strukket med de ovennævnte egenværdier i hhv. hver af de tre retninger. Det kan indses ved matrixproduktet mellem afbildningsmatricen og en tilfældig vektor med koordinaterne $x_1$, $x_2$ og $x_3$: 
 	
 	\cent{$ \mediumMatrix{2}{0}{0}{0}{4}{0}{0}{0}{6} \cdot \vek{x_1}{x_2}{x_3} = \vek{2x_1}{4x_2}{6x_3} $}
 	
-	\subsection*{Bestemmelse af egenværdier og egenvektorer ud fra vilkårlig kvadratisk matrice}
+	\subsubsection{Eksempel - egenværdiproblemet for differentiation}
+	
+	En lineær afbildning $ f : \mathbb{C}^\infty \mapsto \mathbb{C}^\infty $ kan gives ved:
+	
+	\cent{$ f(x(t)) = x'(t) $}
+	
+	$x(t)$ kan defineres ved:
+	
+	\cent{$ x(t)= e^{\lambda t}$}
+	
+	Dens afledte kan så bestemmes til:
+	
+	\cent{$x'(t)=\lambda  e^{\lambda t}$}
+	
+	Hvilket er afbildningen af $ x(t) $ med hensyn til $ f $:
+	
+	\cent{$ f(e^{\lambda t}) = \lambda  e^{\lambda t} $}
+	
+	Her ses det, at egenværdien er $\lambda$ og dens egenvektor er $e^{\lambda t}$. Egenværdien kan antage et ubestemt antal værdier og angives $k$; afbildningens egenrum kan så bestemmes ved:
+	
+	\cent{$E_\lambda = \{ke^{\lambda t} | k \in \mathbb{R}\} $}
+	
+	\subsubsection{Bestemmelse af egenværdier og egenvektorer ud fra vilkårlig kvadratisk matrice}
 	
 	I det foregående eksempel kunne egenværdierne for en afbildning eksplicit aflæses i afbildningsmatricen \afb{a}{F}{a}, men det er ikke altid tilfældet. Det er nemlig ikke kun diagonalmatricer der har egenværdier, vilkårlige kvadratiske matricer kan også have egenværdier som ikke kan aflæses direkte ud fra dens elementer. Til disse må man ty til nogle andre matricer, og det kræver noget mere viden omkring matricer og egenværdier. \newline
 	Man kan betragte en matrice som er afbildningsmatrix for en afbildning $h$:
@@ -105,16 +134,44 @@
 	
 	Her ses det, at 2 og 3 kan være afbildningens egenværdier, og de to vektorer $v_1=(2,-1)$ og $v_1=(1,1)$ egenværdiernes dertilhørende egenvektorer.
 	
+	\subsubsection{Egenværdier og egenvektorer for matricer}
+	Alt indhold i de foregåedne sektioner gælder også for matricer og definitionen for egenværdiproblemet med hensyn til matricer er også identisk med definitionen for vektorer:
+	
+	\cent{$ \textbf{Av} = \lambda \textbf{v}, \quad \textbf{v} \neq \textbf{o} $}
+	
+	Hvor $ \textbf{A} $ er en vilkårlig kvadratisk matrice, $ \lambda $ er en egenværdi for $\textbf{A}$ med dens dertilhørende egenvektor $ \textbf{v} $.
+	
+	\subsubsection{Undersøge om vektorer er egenvektorer for en matrix}
+	
+	Der er givet et sæt af vektorer $ v $ som indeholder tre vektorer $ ((2,3),(4,4),(2,-1)) $. Der skal undersøges om disse er egenvektorer for nedenstående matrix:
+	
+	\cent{$ \textbf{A} = \smallMatrix{4}{-2}{3}{-1} $}
+	
+	Det kan gøres ved hjælp af matrix-vektor produktet mellem hver af en vektorer i sættet og $ \textbf{A} $:
+	
+	\mAlign{\textbf{A} \textbf{v}_1 &= \smallMatrix{4}{-2}{3}{-1} \cdot \vekt{2}{3} = \vekt{2}{3} = \textbf{v}_1 \\
+		\textbf{A} \textbf{v}_1 &= \smallMatrix{4}{-2}{3}{-1} \cdot \vekt{4}{4} = \vekt{8}{8} = 2\textbf{v}_2 \\ 
+		\textbf{A} \textbf{v}_1 &= \smallMatrix{4}{-2}{3}{-1} \cdot \vekt{2}{-1} = \vekt{10}{7} \neq \lambda \textbf{v}_3}
+	
+	De to første vektorer er egenvektorer for $ \textbf{A} $ da de resulterende vektorer er proportionale med $ \textbf{A} $, den sidste derimod, er ikke proportional og er derved ikke en egenvektor for $ \textbf{A} $.
+	
 	\subsection{Generelle egenskaber for egenvektorer og egenværdier}
-	\subsubsection{Mængden af egenvektorer}
-	Senere hen vil det vise sig, at hvis en hvilken som helst afbildningsmatrix for en vilkårlig afbildning har en egenværdi, så er mængden af de egenvektorer der knytter sig til denne egenværdi uendelig. Denne mængde af uendelige egenvektorer knyttet til $\lambda$ vil så også udgøre et underrum i $V$, hvilket medfører at der er tale om et vektorrum der overholder stabilitetskravene for dette. Dette underrum kaldes også \textit{egenrumnet}, og hvis dette rum er endeligt dimensionalt, så omtales det som den \textit{geometriske multiplicitet af $\lambda$}. \newline
-	\newline
-	Kort opsummeret:
+	\subsubsection{Egenvektorrummet}
+	I en senere sektion vil det også vise sig, at mængden af egenvektorer for en egenværdi er uendelig. Denne mængde vil så også udgøre et underrum i $V$ da det er stabilt med hensyn til addition og multiplikation. Dette underrum kaldes også \textit{egenrummet}, og hvis dette rum er endeligt dimensionalt, så omtales det som den \textit{geometriske multiplicitet af $\lambda$}, $gm(E_\lambda)$. Dette kan matematisk også udtrykkes som:
+	
+	\cent{$ E_\lambda = \{ \textbf{v} \in V | f(\textbf{v} = \lambda \textbf{v}) \}$}
+	\cent{$ gm(E_\lambda) = dim(E_\lambda), \quad dim(E_\lambda)\neq \infty $}
+	
+	Dette gælder for både vektorer og matricer med både reelle såvel komplekse egenværdier og egenvektorer.
+	
+	Kort gengivet:
 	
 	\begin{itemize}
 		\item Mængden af egenvektorer tilhørende en vilkårlig egenværdi er uendelig.
 		\item Denne mængde udgør også et underrum af $V$ der også omtales som \textit{egenrummet}.
 		\item Hvis denne er endelig dimensional kaldes det også \textit{den geometriske multiplicitet af $\lambda$}.
+		\item Gælder både for reelle og komplekse egenværdier og egenvektorer.
+		\subitem Disse egenværdiers tilhørende egenrum vil så udgøre et underrum i hhv. $ \mathbb{R}^n $ og $ \mathbb{C}^n $
 	\end{itemize}
 	\subsubsection{Egenrummet og dens egenskaber}
 	For en afbildning $f : V \mapsto V$ gælder der det særlige omkring udvælgelse af egenvektorer i de forskellige egenrum der knytter sig til afbildningens egenværdier at:
@@ -126,7 +183,7 @@
 	Disse vektorer vil så være lineært uafhængige.
 	\subsubsection*{Bevis}
 	
-	ud fra antagelsen om at ovenstående ikke gælder, må det gælde at en vektor $ \textbf{x} $ kan hives ud af sættet og besrives af det udtyndede sæt, hvor alle lineært afhængige vektorer er pillet ud: 
+	Ud fra antagelsen om at ovenstående ikke er tilfældet, må det gælde at en vektor $ \textbf{x} $ kan hives ud af sættet og beskrives af det udtyndede sæt, hvor alle lineært afhængige vektorer er pillet ud: 
 	
 	\cent{$ \textbf{x} = k_1v_1+k_2v_2+...+k_mv_m $}
 	
@@ -173,7 +230,15 @@
 	
 	\subsubsection{Eksempel på diagonal afbildningsmatrix med reelle elementer}
 	
+	En lineær afbildning $ f : \mathbb{R}^2 \mapsto \mathbb{R}^2 $ er givet ved:
 	
+	\mAlign{f(a)&=a_1 \\ f(a)&=-a_2}
+	
+	Egenværdierne kan tydeligt bestemmes til 1 og -1 og afbildningsmatricen for $ f $ kan uden videre angives ved:
+	
+	\cent{ $ \afb{e}{f}{e} = \smallMatrix{1}{0}{0}{-1}$}
+	
+	Denne afbildningsmatrix, som er en diagonalmatrix, har afbildningens egenværdier som diagonalelementer.
 	
 	\subsubsection*{Eksempel på diagonal afbildningsmatrix med komplekse elementer}
 	Lad $ f : \mathbb{C}^2 \mapsto \mathbb{C}^2 $ være en kompleks lineær afbildning som opfylder:
@@ -187,5 +252,49 @@
 	Det ses, at $i$ og $-i$ er egenværdier for $f$ med tilhørende egenvektorer $(i,1)$ og $(-i,1)$.  Da vektorerne ovenikøbet er lineært uafhængige, er det også en egenbasis for vektorrummet $\mathbb{C}^2$ med tilhørende afbildningsmatrix som givet ved nedenstående:
 	
 	\cent{$ \Lambda = \smallMatrix{\lambda_1}{0}{0}{\lambda_2} = \smallMatrix{i}{0}{0}{-i} $}
+	
+	
+	
+	\subsection{Specielt om matricer}
+	\subsubsection{En generel bestemmelse af deres egenværdier og egenvektorer}
+	
+	De metoder der indtil videre er benyttet, kan beskrives som værende manuelle og trivielle og det har ofte indebåret valg af vektorer der i sidste ende ikke var tilfældigt udvalgt. Til bestemmelse af egenværdier og deres egenvektorer ved hjælp af en mere generel metode, bliver man nød til at omskrive på definitionen for egenværdiproblemet. Her benyttes at $ \textbf{Ev}=\textbf{v} $:
+	
+	\mat{\textbf{Av} = \lambda \textbf{v} 
+		 \\ \Leftrightarrow  \\
+		  \textbf{Av} - \lambda \textbf{v} = 0 
+		  \\ \Leftrightarrow \\
+	  		\textbf{Av} - \lambda (\textbf{Ev}) = 0 \\
+	  		\Leftrightarrow \\
+  				\textbf{Av} - (\lambda \textbf{E})\textbf{v} = 0 \\ 
+  				\Leftrightarrow \\
+  					(\textbf{A}-\lambda \textbf{E})\textbf{v}=0}
+  	
+  	Den sidste ligning som er fremkommet ved omskrivningen indeholder en matrix der går under tilnavnet \textit{Den Karakteristiske Matrix}. Denne ligning er et homogent ligningssystem med \textit{n} ligninger (antallet af rækker i \textbf{A}) og \textit{n} ubekendte (dimensionen af \textbf{v}). Dette ligningssystem kan have to forskellige typer af løsninger, enten er nul-vektoren en løsning ellers findes der et uendeligt antal af løsninger. Da en egenvektor skal være en \textit{egentlig} vektor, så skal der kunne bestemmes en egenvektor ud fra en uendelig mængde af løsninger. Skrevet på en anden måde, \textit{den karakteristiske matrix} skal være singulær, og på baggrund af dette kan determinanten af den karakteristiske matrix bestemmes ved:
+  	
+  	\cent{$ det(\textbf{A}-\lambda \textbf{E}) $}
+  	
+  	Determinanten af denne matrix vil så returnere et reelt polynomium af en grad der modsvarer dimensionen af \textit{Den Karakteristiske Matrix}, og hvis løsninger er egenværdier for matricen \textbf{A}. Her skal man dog lige stoppe op og overveje hvad det indebærer, at man har med et reelt polynomium at gøre. For reelle polynomier gælder der for f.eks. komplekse løsninger, at de altid optræde i såkaldte \textit{konjugerede par}, dvs. hvis $  \script{z} =1 + i $ er en løsning, så er $ \bar{\script{z}} =1 - i $ også en løsning. Derved gælder, at komplekse egenværdier også vil optræde i konjugerede par.\\
+  	\\
+  	Dette polynomium kaldes også \textit{Det Karakteristiske Polynomium} og sættes denne lig 0 fås \textit{karakterligningen}:
+  	
+  	\cent{$ det(\textbf{A}-\lambda \textbf{E}) = 0 $}
+  	
+  	Fremadrettet kan man referere til ovenstående som \textit{De tre Karakteristiske trin} for nemhedens skyld.
+  	
+  	\subsubsection{Fremgangsmåde ved brug af De Tre Karakteristiske Egenskaber}
+  	
+  	Bestemmelse af egenværdier og egenvektorer for vilkårlige kvadratiske matricer ved brug af \textit{De tre Karakteristiske trin} foretages ved følgende tre trin:
+  	\begin{enumerate}
+  		\item  Bestem \textit{Den Karakteristiske Matrix}.
+  		\item Bestem determinanten af denne og derefter løsningerne for \textit{Det Karakteristiske Polynomum}.
+  		\item Indsæt løsningerne i \textit{Den Karakteristiske Matrix} og GaussJordan reducer denne.
+  	\end{enumerate}
+  	
+	\subsubsection{Bestemmelse af egenværdier og egenvektorer ud fra eksempel}
+	
+	Givet en matrice \textbf{A}:
+	
+	\cent{$ \textbf{A} = \smallMatrix{\frac{7}{3}}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}} $}
 	
 \end{document}
