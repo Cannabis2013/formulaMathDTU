@@ -305,4 +305,42 @@
 	
 	\cent{$ det(\textbf{A}- \lambda \textbf{E}) = det(\smallMatrix{\frac{7}{3}- \lambda}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}- \lambda})= \lambda^2-5\lambda+6$}
 	
+	Løsninger til dette andengradspolynomium er:
+	
+	\cent{$ \lambda = 2 \vee \lambda = 3 $}
+	
+	Egenværdierne for \textbf{A} er hermed bestemt.\\\\
+	\textbf{A}'s egenvektorer kan så bestemmes ved at indsætte egenværdierne $\lambda_i$ i \textit{Den Karakteristiske Matrix} og løse nedenstående vektor ligning:
+	
+	\cent{($ \textbf{A}-\lambda \textbf{E})\textbf{x}=0$}
+	
+	Ligningen løses for hhv. $\lambda=2$ og $\lambda=3$:
+	
+	\cent{$ \textbf{A}-2\textbf{E}=\smallMatrix{\frac{7}{3}-2}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}-2} = \smallMatrix{\frac{1}{3}}{\frac{2}{3}}{\frac{1}{3}}{\frac{2}{3}} \rightarrow Trap(\textbf{A}-2\textbf{E})=\smallMatrix{1}{2}{0}{0} $}
+	
+	\cent{$ \textbf{A}-3\textbf{E}=\smallMatrix{\frac{7}{3}-3}{\frac{2}{3}}{\frac{1}{3}}{\frac{8}{3}-3} = \smallMatrix{-\frac{2}{3}}{\frac{2}{3}}{\frac{1}{3}}{-\frac{1}{3}} \rightarrow Trap(\textbf{A}-2\textbf{E})=\smallMatrix{1}{-1}{0}{0} $}
+	
+	
+	Det giver følgende løsningsmængder:
+	
+	\cent{$ \textbf{E}_2 = \vekt{x_1}{x_y} = p_1 \vekt{-2}{1} $}
+	\cent{$ \textbf{E}_3 = \vekt{x_1}{x_y} = p_1 \vekt{1}{1} $}
+	
+	Indsættes $ p_1 = -1 $ og $ p_1=1 $ i hhv, den første og anden ligning fremkommes to mulige egenvektorer for \textbf{A}:
+	
+	\cent{$ \textbf{v}_2 = (-1) \cdot \vekt{-2}{1} = \vekt{2}{-1} $}
+	\cent{$ \textbf{v}_3 = (1) \cdot \vekt{1}{1} = \vekt{1}{1} $}
+	
+	Derved har man bestemt alle de mulige egenværdier for \textbf{A}, mængden af egenvektorer tilhørende hver enkelt egenværdi og endda to mulige bud på egenvektorer.
+	
+	\subsection{De tre relationer mellem læren om polynomier og egenværdier}
+	
+	Relationen mellem \textit{Det Karakteristiske Polynomium} og mængden af egenværdier for en vilkårlig kvadratisk matrix \textbf{A} kan spores tilbage om læren om reelle polynomier. Her gælder der følgende relationer med hensyn til mængden af løsninger, og typen af løsninger:
+	\begin{itemize}
+		\item Graden af \textit{Det Karakteristiske Polynomium} kan ikke overstige dimensionen af \textbf{A}.
+		\item Ifølge læren om polynomier og dens løsninger, kan antallet af løsninger, reelle såvel komplekse, ikke overstige polynomiets grad. Som en konsekvens af dette, og ovenstående kendsgerning, kan mængden af egenværdier derfor ikke overstige dimensionen af \textbf{A}\footnote{Dimensionen af \textbf{A} refererer til antallet af søjler og kolonner, og da det forudsættes at denne er kvadratrisk, er antallet af søjler lig med antallet af kolonner.} .
+		\item Findes der komplekse løsninger til et reelt polynomium, optræder disse altid i konjugerede par. Det samme vil så gælde for \textit{Det Karakteristiske Polynomium}, og da løsningerne til dette er egenværdier, vil egenværdier også optræde i par.
+	\end{itemize}
+	
+	
 \end{document}
