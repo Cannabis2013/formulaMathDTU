@@ -19,7 +19,7 @@
 % Math section related
 \newcommand{\cent}[1]{\begin{center}#1\end{center}}
 \newcommand{\mAlign}[1]{\begin{align*}#1\end{align*}}
-\newcommand{\mat}[1]{\begin{gather*}#1\end{gather*}}
+\newcommand{\mat}[1]{\begin{equation}#1\end{equation}}
 
 % Macro section
 \newcommand{\afb}[3]{\ensuremath{_#1 \textbf{#2}_#3}}
@@ -36,7 +36,52 @@
 			#3 & #4
 \end{bmatrix}}}
 
-\newcommand{\script}[1]{\mathpzc{#1}}
+\newcommand{\script}[1]{\mathpzc{#1},
+	author = {author},
+	editor = {editor},
+	title = {title},
+	booktitle = {booktitle},
+	date = {date},
+	OPTeditora = {editora},
+	OPTeditorb = {editorb},
+	OPTeditorc = {editorc},
+	OPTtranslator = {translator},
+	OPTannotator = {annotator},
+	OPTcommentator = {commentator},
+	OPTintroduction = {introduction},
+	OPTforeword = {foreword},
+	OPTafterword = {afterword},
+	OPTsubtitle = {subtitle},
+	OPTtitleaddon = {titleaddon},
+	OPTmaintitle = {maintitle},
+	OPTmainsubtitle = {mainsubtitle},
+	OPTmaintitleaddon = {maintitleaddon},
+	OPTbooksubtitle = {booksubtitle},
+	OPTbooktitleaddon = {booktitleaddon},
+	OPTlanguage = {language},
+	OPToriglanguage = {origlanguage},
+	OPTvolume = {volume},
+	OPTpart = {part},
+	OPTedition = {edition},
+	OPTvolumes = {volumes},
+	OPTseries = {series},
+	OPTnumber = {number},
+	OPTnote = {note},
+	OPTpublisher = {publisher},
+	OPTlocation = {location},
+	OPTisbn = {isbn},
+	OPTchapter = {chapter},
+	OPTpages = {pages},
+	OPTaddendum = {addendum},
+	OPTpubstate = {pubstate},
+	OPTdoi = {doi},
+	OPTeprint = {eprint},
+	OPTeprintclass = {eprintclass},
+	OPTeprinttype = {eprinttype},
+	OPTurl = {url},
+	OPTurldate = {urldate},
+}
+
 
 % Remove "New paragraph" indentation
 \setlength{\parindent}{0cm} 
